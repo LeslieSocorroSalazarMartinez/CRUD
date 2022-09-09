@@ -1,0 +1,42 @@
+CREATE DATABASE vestidos;
+SHOW DATABASES;
+USE vestidos;
+
+CREATE TABLE Proveedores (id_proveedor int not null primary key auto_increment, nomproveedor varchar (50) not null, RFC char (13), pais varchar (50), estado varchar(50), municipio varchar (50), calle varchar (10),  CP varchar (10), numint int (10), numext int (10));
+SHOW TABLES;
+
+Create table usuarios(id_usuario int not null primary key auto_increment, usu varchar (50) not null,password varchar(12) not null);
+SHOW TABLES;
+
+
+CREATE TABLE vestidos (id int not null primary key auto_increment, procad varchar (50),pronom varchar (100), promar varchar(80), precio float, estatus enum('Disponible', 'En espera', 'Descontinuado'), stock int, color varchar (50), talla varchar(80));
+SHOW TABLES;
+
+
+
+
+**********************************************************************************************************************************************************************
+CREATE TABLE Clientes (id_cliente int not null primary key auto_increment, nombre varchar (45), apellido_paterno varchar (45), apellido_materno varchar (45), correo_electronico varchar (200), RFC varchar(13));
+SHOW TABLES;
+
+CREATE TABLE Direccion_Envio(id_direccionenvio int not null primary key auto_increment, calle varchar (45), col varchar (45), ciudad varchar (45), CP varchar(10), id_cliente int,
+Foreign key (id_cliente) references Clientes (id_cliente));
+SHOW TABLES;
+
+
+
+CREATE TABLE venta(id_venta int not null primary key auto_increment, clave varchar (60) not null, fecha DATETIME, Cantidad int, Precio_unitario float,Total float,
+producto INT , cliente INT,
+Foreign key (producto) references producto (id_producto),
+Foreign key (cliente) references clientes (id_cliente)
+);
+SHOW TABLES;
+
+
+
+
+
+
+
+
+
